@@ -50,6 +50,7 @@ function renderItem(item) {
   );
   body.append(details, element("h3", "", item.name));
   if (item.description) body.append(element("p", "", item.description));
+  if (item.imageReference) body.append(element("p", "image-reference", "صورة مرجعية للصنف من فرع آخر"));
   card.append(body);
   return card;
 }
@@ -114,6 +115,8 @@ function renderBranchMenu(branch) {
   const { menu } = branch;
   menuTitle.textContent = "قائمة " + branch.name;
   branchSelect.value = branch.id;
+  document.getElementById("current-branch").textContent = branch.name;
+  document.querySelectorAll("[data-branch-choice]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.branchChoice===branch.id)));
   queryInput.value = "";
   selectedCategory = "featured";
   items = (menu.categories ?? []).flatMap(category => category.items.map(item => ({
@@ -126,7 +129,7 @@ function renderBranchMenu(branch) {
   filters.hidden = !hasCatalog;
   document.querySelector("#filter-strip").hidden = !hasCatalog;
 
-  const message = hasCatalog
+  const message = branch.id==="hail" ? "قائمة جزئية وأسعار توصيل مرجعية؛ بعض الصور من أصناف مطابقة في فروع أخرى. " : hasCatalog
     ? "الأسعار والتوفّر بحسب قائمة التوصيل المنشورة لهذا الفرع. "
     : "صورة نشرها زائر. للاستفسار عن الأسعار الحالية، اتصل بالفرع. ";
   const source = element("a", "", menu.sourceLabel + " ↗");
@@ -210,3 +213,9 @@ const cityPoints=[{id:"hail",lat:27.5114,lon:41.7208},{id:"buhayrah",lat:24.0683
 const distance=(lat,lon,p)=>{const r=Math.PI/180,a=Math.sin((p.lat-lat)*r/2)**2+Math.cos(lat*r)*Math.cos(p.lat*r)*Math.sin((p.lon-lon)*r/2)**2;return 6371*2*Math.asin(Math.min(1,Math.sqrt(a)))};
 function locateBranch(auto=false){if(!navigator.geolocation){locStatus.textContent="الموقع غير مدعوم؛ اختر الفرع يدوياً.";return}locate.disabled=true;locStatus.textContent="جارٍ تحديد المدينة…";navigator.geolocation.getCurrentPosition(pos=>{locate.disabled=false;if(auto&&manualChoice){locStatus.textContent="تم الاحتفاظ باختيارك.";return}const {latitude,longitude}=pos.coords;const nearest=cityPoints.map(p=>({...p,km:distance(latitude,longitude,p)})).sort((a,b)=>a.km-b.km)[0];if(nearest.km>100){locStatus.textContent="أنت خارج نطاق المدن الحالية؛ اختر الفرع يدوياً.";return}const chosen=branches.find(b=>b.id===nearest.id);branchSelect.value=chosen.id;const u=new URL(location.href);u.searchParams.set("branch",chosen.id);history.replaceState(null,"",u);renderBranchMenu(chosen);locStatus.textContent=nearest.id==="hail"?"تم اختيار حائل حسب موقعك.":"تم اختيار ينبع (البحيرة افتراضياً؛ اختر فرعك داخل المدينة).";if(!auto)document.getElementById("menu").scrollIntoView({block:"start"});},()=>{locate.disabled=false;locStatus.textContent="تعذر تحديد الموقع؛ يمكنك اختيار الفرع يدوياً.";},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})}
 locate.addEventListener("click",()=>locateBranch());if(!branchId&&navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(p=>{if(p.state==="granted"&&!manualChoice)locateBranch(true)}).catch(()=>{});
+
+const trigger=document.getElementById("branch-trigger"), options=document.getElementById("branch-options"), manual=document.getElementById("manual-branches");
+function togglePicker(open){options.hidden=!open;trigger.setAttribute("aria-expanded",String(open));}
+trigger.addEventListener("click",()=>togglePicker(options.hidden));
+for(const branch of branches){const b=element("button","branch-choice");b.type="button";b.dataset.branchChoice=branch.id;b.setAttribute("aria-pressed",String(branchSelect.value===branch.id));const pin=element("span","pin-icon");pin.setAttribute("aria-hidden","true");b.append(pin,element("span","",branch.name));b.addEventListener("click",()=>{manualChoice=true;branchSelect.value=branch.id;branchSelect.dispatchEvent(new Event("change"));togglePicker(false);trigger.focus();});manual.append(b);}
+document.addEventListener("click",e=>{if(!e.target.closest(".header-picker"))togglePicker(false)});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!options.hidden){togglePicker(false);trigger.focus()}});
