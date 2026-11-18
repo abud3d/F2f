@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171613">
+  <meta name="description" content="استكشف قائمة مطعم ومقهى فيس تو فيس وتعرّف على مواقع فروعه في حائل وينبع.">
+  <title>فيس تو فيس — القائمة والفروع</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="header-brand"><a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a><div class="branch-picker header-picker" hidden><button type="button" class="branch-trigger" id="branch-trigger" aria-expanded="false" aria-controls="branch-options"><span class="pin-icon" aria-hidden="true"></span><span id="current-branch">اختر الفرع</span><span aria-hidden="true">⌄</span></button><div id="branch-options" class="branch-options" hidden><p class="picker-caption">اختر فرعك</p><label for="menu-branch" class="sr-only">اختر الفرع</label><select id="menu-branch" hidden></select><div id="manual-branches"></div><button type="button" class="button locate-button" id="locate-branch"><span class="pin-icon" aria-hidden="true"></span> أقرب فرع إليّ</button></div><p id="location-status" role="status"></p></div></div>
+      <div class="header-controls"><button type="button" id="cart-open" class="header-button" aria-label="سلة الطلبات" hidden>🛒 <span id="cart-count">0</span></button><button id="theme-toggle" class="header-button" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">☾</button><button id="nav-toggle" class="header-button" type="button" aria-label="فتح القائمة" aria-haspopup="dialog">☰</button></div>
+      
+    </div>
+  </header><dialog id="side-nav" aria-labelledby="side-title"><div class="side-heading"><strong id="side-title">F2F · القائمة</strong><button class="header-button" id="nav-close" type="button" aria-label="إغلاق القائمة">×</button></div><nav aria-label="التنقل الرئيسي"><a href="./index.html" data-current-branch>الرئيسية</a><a href="./index.html#menu" data-current-branch>القائمة</a><a href="./branches.html" data-current-branch>الفروع</a><a href="./orders.html">الطلبات — المدير</a></nav></dialog>
+
+  <main id="main">
+    <section class="hero" data-branch="buhayrah" aria-labelledby="hero-title"><button type="button" class="hero-photo" id="hero-photo" aria-label="تكبير صورة المعلم"><img id="hero-image" src="./yanbu-landmark.svg" alt="رسم توضيحي للواجهة البحرية في ينبع" width="1600" height="700"><span class="zoom-badge" aria-hidden="true">⤢</span></button>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> <b id="hero-branch-line">مطعم ومقهى — فرع البحيرة</b></p>
+          <h1 id="hero-title">فرع البحيرة</h1><p class="landmark-caption" id="landmark-caption"></p>
+          <p class="hero-description">من البيتزا النابولية إلى القهوة المختصة، اكتشف القائمة واختر الفرع الأقرب لك.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#menu">تصفّح القائمة <span aria-hidden="true">←</span></a>
+            <a class="button ghost" href="./branches.html" data-current-branch>تعرّف على الفروع</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="menu-title">قوائم الفروع</h2>
+          
+        </div>
+        <div class="menu-search" hidden>
+          <label class="sr-only" for="menu-query">ابحث في قائمة الفرع</label>
+          <span aria-hidden="true" class="search-mark"></span>
+          <input id="menu-query" type="search" placeholder="ابحث عن طبق أو مشروب" autocomplete="off" maxlength="100">
+        </div>
+        <div class="filter-strip" id="filter-strip" hidden><button type="button" class="strip-arrow" id="scroll-right" aria-label="تمرير يمين">›</button><div class="filters" id="category-filters" role="group" aria-label="أقسام قائمة الفرع" hidden></div><button type="button" class="strip-arrow" id="scroll-left" aria-label="تمرير يسار">‹</button></div>
+        <p class="sr-only" id="menu-status" role="status"></p>
+        <p class="source-note" id="menu-source" hidden></p>
+        <div id="menu-results">
+          <ul>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/البحيرة/فيس-2-فيس-198197">قائمة فرع البحيرة</a></li>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الصريف/face-2-face-100992">قائمة فرع الصريف</a></li>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/حائل/الودي/face-2-face-57348">قائمة حائل</a></li><li><a href="https://menu02.restaurantguru.com/m1/fys-tw-fys-drayf-thrw-F2F-menu-f1o.jpg">صورة قائمة فرع الجابرية</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a>
+      <a href="https://www.instagram.com/f2f_lounge/">إنستغرام <span aria-hidden="true">↗</span></a>
+      <a href="https://www.face2face.sa/">الموقع المرجعي <span aria-hidden="true">↗</span></a><details class="footer-branches"><summary>الفروع</summary><ul><li><a href="./branches.html#buhayrah">فرع البحيرة</a></li><li><a href="./branches.html#suraif">فرع الصريف</a></li><li><a href="./branches.html#jabriyah">فرع الجابرية</a></li><li><a href="./branches.html#hail">فرع حائل</a></li></ul></details>
+      <a class="back-top" href="#top">أعلى الصفحة <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+<dialog id="image-viewer" aria-labelledby="image-viewer-title"><div class="viewer-content"><button type="button" id="viewer-close" aria-label="إغلاق الصورة"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><img id="viewer-image" alt=""><div class="viewer-caption"><h2 id="image-viewer-title"></h2><p id="viewer-description"></p></div></div></dialog>
+<div class="cart-bar" id="cart-bar" hidden><span id="cart-summary"></span><button type="button" id="cart-review">مراجعة الطلب ←</button></div><dialog id="cart-dialog" aria-labelledby="cart-title"><div class="cart-head"><h2 id="cart-title">مراجعة الطلب</h2><button type="button" id="cart-close" aria-label="إغلاق">×</button></div><div class="cart-body"><strong id="cart-branch"></strong><div id="cart-items"></div><div class="cart-total">الإجمالي <strong id="cart-total"></strong></div><label>اسم العميل<input id="customer-name" autocomplete="name" maxlength="80" required placeholder="الاسم"></label><label>طريقة الطلب<select id="cart-method" required><option value="">اختر طريقة الطلب</option><option value="drive">درايف ثرو</option><option value="delivery">توصيل</option><option value="local">محلي — داخل المطعم</option></select></label><label id="table-wrap" hidden>رقم الطاولة<input id="table-number" inputmode="numeric" maxlength="5" placeholder="مثال: 12"></label><div id="delivery-wrap" hidden><label for="delivery-address">عنوان التوصيل</label><div class="delivery-location-row"><input id="delivery-address" maxlength="200" placeholder="الحي، الشارع، رقم المبنى"><button type="button" id="delivery-locate" aria-label="تحديد موقع التوصيل الحالي" title="تحديد موقعي"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></button></div><p id="delivery-location-status" role="status"></p><a id="delivery-map" target="_blank" rel="noopener noreferrer" hidden>عرض الموقع على الخريطة ↗</a><button type="button" id="delivery-clear" hidden>إزالة الموقع</button></div><label id="drive-wrap" hidden>وصف السيارة (اختياري)<input id="car-note" maxlength="100"></label><label>ملاحظات (اختياري)<textarea id="order-note" maxlength="200" rows="2"></textarea></label><p id="cart-notice"></p><label class="cart-confirm"><input id="cart-confirm" type="checkbox"> أؤكد الأصناف والكميات والفرع والمدينة وطريقة الطلب</label><button type="button" class="wa-send" id="send-whatsapp" disabled>معاينة واتساب وحفظ طلب تجريبي</button><button type="button" id="copy-order" disabled>نسخ الطلب</button><p id="recipient-note" role="status"></p><textarea id="order-copy-text" readonly hidden rows="8"></textarea></div></dialog></body>
+</html>
