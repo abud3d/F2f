@@ -1,19 +1,18 @@
-import { branches, categories } from "./data.js";
+import { branches } from "./data.js";
 
+const branchSelect = document.querySelector("#menu-branch");
+const menuTitle = document.querySelector("#menu-title");
+const menuSource = document.querySelector("#menu-source");
 const queryInput = document.querySelector("#menu-query");
+const search = queryInput.closest(".menu-search");
 const filters = document.querySelector("#category-filters");
 const results = document.querySelector("#menu-results");
 const status = document.querySelector("#menu-status");
 const branchResults = document.querySelector("#branch-results");
-const items = categories.flatMap(category => category.items.map(entry => ({
-  ...(typeof entry === "string" ? { name: entry } : entry),
-  categoryId: category.id,
-  categoryTitle: category.title
-})));
-
 const priceFormat = new Intl.NumberFormat("ar-SA", { maximumFractionDigits: 2 });
 
 let selectedCategory = "featured";
+let items = [];
 
 function element(tag, className, label) {
   const node = document.createElement(tag);
@@ -56,6 +55,8 @@ function renderItem(item) {
 }
 
 function renderMenu() {
+  if (items.length === 0) return;
+
   const query = normalize(queryInput.value);
   const words = query ? query.split(/\s+/u) : [];
   const visibleItems = items.filter(item => {
@@ -75,16 +76,69 @@ function renderMenu() {
   const grid = element("div", "menu-grid");
   grid.append(...visibleItems.map(renderItem));
   results.replaceChildren(grid);
-  status.textContent = "عدد الأصناف المعروضة: " + new Intl.NumberFormat("ar-SA").format(visibleItems.length);
+  status.textContent = "عدد الأصناف المعروضة: " + priceFormat.format(visibleItems.length);
 }
 
-const filterOptions = [{ id: "featured", title: "مختارات" }, ...categories];
-for (const option of filterOptions) {
-  const button = element("button", "filter", option.title);
-  button.type = "button";
-  button.dataset.category = option.id;
-  button.setAttribute("aria-pressed", String(option.id === selectedCategory));
-  filters.append(button);
+function renderFilters(categories) {
+  const options = [{ id: "featured", title: "مختارات" }, ...categories];
+  const buttons = options.map(option => {
+    const button = element("button", "filter", option.title);
+    button.type = "button";
+    button.dataset.category = option.id;
+    button.setAttribute("aria-pressed", String(option.id === selectedCategory));
+    return button;
+  });
+  filters.replaceChildren(...buttons);
+}
+
+function renderPhotoMenu(branch) {
+  const photo = element("img");
+  photo.alt = "صورة قائمة " + branch.name;
+  photo.loading = "lazy";
+  photo.decoding = "async";
+  photo.addEventListener("error", () => { photo.hidden = true; }, { once: true });
+  photo.src = branch.menu.image;
+
+  const link = element("a", "button branch-menu-link", "افتح صورة القائمة بالحجم الكامل");
+  link.href = branch.menu.image;
+  const caption = element("figcaption");
+  caption.append(link);
+  const figure = element("figure", "photo-menu");
+  figure.append(photo, caption);
+  results.replaceChildren(figure);
+  status.textContent = "صورة قائمة " + branch.name;
+}
+
+function renderBranchMenu(branch) {
+  const { menu } = branch;
+  menuTitle.textContent = "قائمة " + branch.name;
+  branchSelect.value = branch.id;
+  queryInput.value = "";
+  selectedCategory = "featured";
+  items = (menu.categories ?? []).flatMap(category => category.items.map(item => ({
+    ...item,
+    categoryId: category.id,
+    categoryTitle: category.title
+  })));
+  const hasCatalog = items.length > 0;
+  search.hidden = !hasCatalog;
+  filters.hidden = !hasCatalog;
+
+  const message = hasCatalog
+    ? "الأسعار والتوفّر بحسب قائمة التوصيل المنشورة لهذا الفرع. "
+    : "صورة نشرها زائر. للاستفسار عن الأسعار الحالية، اتصل بالفرع. ";
+  const source = element("a", "", menu.sourceLabel + " ↗");
+  source.href = menu.source;
+  menuSource.replaceChildren(document.createTextNode(message), source);
+  menuSource.hidden = false;
+
+  if (hasCatalog) {
+    renderFilters(menu.categories);
+    renderMenu();
+  } else {
+    filters.replaceChildren();
+    renderPhotoMenu(branch);
+  }
 }
 
 filters.addEventListener("click", event => {
@@ -111,7 +165,10 @@ function renderBranch(branch) {
   call.setAttribute("aria-label", "اتصل بـ" + branch.name);
 
   const actions = element("div", "branch-actions");
-  actions.append(map, call);
+  const menu = element("a", "button branch-menu-link", "عرض المنيو");
+  menu.href = "?branch=" + encodeURIComponent(branch.id) + "#menu";
+  menu.setAttribute("aria-label", "عرض قائمة " + branch.name);
+  actions.append(menu, map, call);
   card.append(
     icon,
     element("p", "branch-type", branch.type),
@@ -122,7 +179,22 @@ function renderBranch(branch) {
   return card;
 }
 
-renderMenu();
+for (const branch of branches) {
+  const option = element("option", "", branch.name);
+  option.value = branch.id;
+  branchSelect.append(option);
+}
+
+branchSelect.addEventListener("change", () => {
+  const branch = branches.find(entry => entry.id === branchSelect.value);
+  const url = new URL(window.location.href);
+  url.searchParams.set("branch", branch.id);
+  window.history.replaceState(null, "", url);
+  renderBranchMenu(branch);
+});
+
+const branchId = new URL(window.location.href).searchParams.get("branch");
+const initialBranch = branches.find(branch => branch.id === branchId) ?? branches[0];
+renderBranchMenu(initialBranch);
+branchSelect.closest(".branch-picker").hidden = false;
 branchResults.replaceChildren(...branches.map(renderBranch));
-filters.hidden = false;
-queryInput.closest(".menu-search").hidden = false;

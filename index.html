@@ -41,20 +41,26 @@
     <section class="menu-section" id="menu" aria-labelledby="menu-title">
       <div class="container">
         <div class="section-head">
-          <div>
-            <h2 id="menu-title">تصفّح القائمة</h2>
-          </div>
-          <div class="menu-search" hidden>
-            <label class="sr-only" for="menu-query">ابحث في القائمة</label>
-            <span aria-hidden="true" class="search-mark"></span>
-            <input id="menu-query" type="search" placeholder="ابحث عن طبق أو مشروب" autocomplete="off" maxlength="100">
+          <h2 id="menu-title">قوائم الفروع</h2>
+          <div class="branch-picker" hidden>
+            <label for="menu-branch">اختر الفرع</label>
+            <select id="menu-branch"></select>
           </div>
         </div>
-        <div class="filters" id="category-filters" role="group" aria-label="أقسام القائمة" hidden></div>
+        <div class="menu-search" hidden>
+          <label class="sr-only" for="menu-query">ابحث في قائمة الفرع</label>
+          <span aria-hidden="true" class="search-mark"></span>
+          <input id="menu-query" type="search" placeholder="ابحث عن طبق أو مشروب" autocomplete="off" maxlength="100">
+        </div>
+        <div class="filters" id="category-filters" role="group" aria-label="أقسام قائمة الفرع" hidden></div>
         <p class="sr-only" id="menu-status" role="status"></p>
-        <p class="source-note">الصور والأسعار من قائمة التوصيل المنشورة، وقد تختلف الأسعار والتوفّر حسب الفرع. <a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الأصالة/فيس-تو-فيس-57348">هنقرستيشن ↗</a></p>
+        <p class="source-note" id="menu-source" hidden></p>
         <div id="menu-results">
-          <p><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الأصالة/فيس-تو-فيس-57348">عرض قائمة فيس تو فيس على هنقرستيشن</a></p>
+          <ul>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/البحيرة/فيس-2-فيس-198197">قائمة فرع البحيرة</a></li>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الصريف/face-2-face-100992">قائمة فرع الصريف</a></li>
+            <li><a href="https://menu02.restaurantguru.com/m1/fys-tw-fys-drayf-thrw-F2F-menu-f1o.jpg">صورة قائمة فرع الجابرية</a></li>
+          </ul>
         </div>
       </div>
     </section>

@@ -145,7 +145,19 @@ button, input { font: inherit; }
 .menu-section, .branches-section { padding-block: clamp(55px, 7vw, 100px); }
 .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 24px; }
 .section-head h2 { font-size: clamp(2.2rem, 4.7vw, 3.65rem); font-weight: 900; line-height: 1.1; margin-top: 9px; }
-.menu-search { position: relative; width: min(100%, 290px); }
+.branch-picker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.branch-picker label { font-weight: 800; }
+.branch-picker select {
+  min-height: 46px;
+  padding: 8px 13px;
+  min-width: 160px;
+  border: 1px solid #cec4b4;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+.menu-search { position: relative; width: min(100%, 290px); margin-block-end: 16px; }
 .menu-search input {
   border: 1px solid #cec4b4;
   border-radius: 8px;
@@ -216,6 +228,17 @@ button, input { font: inherit; }
 .empty-state { padding: 36px 20px; text-align: center; border: 1px dashed #b7aa95; border-radius: var(--radius); color: var(--muted); }
 .source-note { margin-bottom: 15px; color: var(--muted); font-size: .91rem; }
 .source-note a { margin-inline-start: 6px; text-underline-offset: 3px; }
+
+.photo-menu { margin: 0; width: min(100%, 720px); }
+.photo-menu img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.photo-menu figcaption { margin-block-start: 12px; }
+.branch-menu-link { border-color: var(--green); color: var(--green); }
+.branch-menu-link:hover { background: #e8eddf; }
 
 .branches-section { background: #eae5d8; border-block-start: 1px solid #ded6c4; }
 .branch-card {
