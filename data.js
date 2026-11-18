@@ -1115,5 +1115,369 @@ export const branches = [
       "source": "https://restaurantguru.com/fys-tw-fys-drayf-thrw-F2F-Yanbu/menu",
       "image": "https://menu02.restaurantguru.com/m1/fys-tw-fys-drayf-thrw-F2F-menu-f1o.jpg"
     }
+  },
+  {
+    "id": "hail",
+    "name": "فرع حائل",
+    "type": "مطعم ومقهى",
+    "address": "حائل، السعودية — العنوان الدقيق بانتظار التحقق",
+    "phone": null,
+    "map": "https://www.google.com/maps/search/?api=1&query=Face%202%20Face%20Hail%20Saudi%20Arabia",
+    "menu": {
+      "sourceLabel": "هنقرستيشن — حائل (قائمة جزئية)",
+      "source": "https://hungerstation.com/sa-ar/restaurants/regions/حائل/الودي/face-2-face-57348",
+      "categories": [
+        {
+          "id": "breakfast",
+          "title": "الإفطار",
+          "items": [
+            {
+              "name": "الإفطار التركي",
+              "price": 73,
+              "featured": true
+            },
+            {
+              "name": "فطور مصري",
+              "price": 69
+            },
+            {
+              "name": "الإفطار الشرقي",
+              "price": 85
+            },
+            {
+              "name": "افوكادو ساندوتش بالبيض",
+              "price": 22
+            },
+            {
+              "name": "الاجبان الثلاث",
+              "price": 21
+            },
+            {
+              "name": "تونه ساندوتش",
+              "price": 19
+            },
+            {
+              "name": "هوت دوج",
+              "price": 19
+            },
+            {
+              "name": "ساندوتش جبنه حلومي",
+              "price": 26
+            },
+            {
+              "name": "ساندوتش كبده",
+              "price": 20
+            },
+            {
+              "name": "كريب الاجبان",
+              "price": 17
+            },
+            {
+              "name": "كبده",
+              "price": 27
+            },
+            {
+              "name": "منقوشه كرافت",
+              "price": 19
+            },
+            {
+              "name": "منقوشه لبنه بالعسل",
+              "price": 19
+            },
+            {
+              "name": "منقوشة لحم بدبس الرمان",
+              "price": 27
+            },
+            {
+              "name": "منقوشه قشقوان",
+              "price": 22
+            },
+            {
+              "name": "حمسه جبنه حلوم",
+              "price": 27
+            },
+            {
+              "name": "منقوشه لبنه بالزعتر",
+              "price": 19
+            },
+            {
+              "name": "شكشوكه",
+              "price": 16
+            },
+            {
+              "name": "فول",
+              "price": 15
+            },
+            {
+              "name": "بوكس اللمة",
+              "price": 99
+            },
+            {
+              "name": "منقوشة حلوم بالبيستو",
+              "price": 16
+            },
+            {
+              "name": "مشكل فلافل",
+              "price": 27
+            }
+          ]
+        },
+        {
+          "id": "hot-starters",
+          "title": "المقبلات الساخنة",
+          "items": [
+            {
+              "name": "ماكروني بول",
+              "price": 33,
+              "featured": true
+            },
+            {
+              "name": "بطاطس حارة بالكزبرة والثوم",
+              "price": 19
+            },
+            {
+              "name": "تاكو جمبري",
+              "price": 32
+            },
+            {
+              "name": "تاكو دجاج",
+              "price": 23
+            },
+            {
+              "name": "كريزي فيس",
+              "price": 26
+            },
+            {
+              "name": "بطاطس بالترافل",
+              "price": 34
+            }
+          ]
+        },
+        {
+          "id": "cold-starters",
+          "title": "المقبلات الباردة",
+          "items": [
+            {
+              "name": "بابا غنوج",
+              "price": 18,
+              "featured": true
+            },
+            {
+              "name": "حمص",
+              "price": 18
+            },
+            {
+              "name": "متبل",
+              "price": 15
+            }
+          ]
+        },
+        {
+          "id": "seafood",
+          "title": "المأكولات البحرية",
+          "items": [
+            {
+              "name": "بافلو شرمب",
+              "price": 45,
+              "featured": true
+            },
+            {
+              "name": "سمك فيليه مقلي",
+              "price": 43
+            }
+          ]
+        },
+        {
+          "id": "salads",
+          "title": "السلطات",
+          "items": [
+            {
+              "name": "سلطة سيزر دجاج",
+              "price": 38
+            },
+            {
+              "name": "سلطة روكا",
+              "price": 25
+            },
+            {
+              "name": "سلطة سيزر بايت",
+              "price": 21
+            },
+            {
+              "name": "سلطه كينوا",
+              "price": 34
+            },
+            {
+              "name": "سلطة يوناني",
+              "price": 21
+            }
+          ]
+        },
+        {
+          "id": "main",
+          "title": "الأطباق الرئيسية",
+          "items": [
+            {
+              "name": "روزيتو مشروم دجاج",
+              "price": 49
+            },
+            {
+              "name": "روزيتو زعفران بالدجاج",
+              "price": 49
+            },
+            {
+              "name": "دجاج بالفطر والكريمة",
+              "price": 46
+            },
+            {
+              "name": "عصفورات اللحمة بالبيستو",
+              "price": 48
+            }
+          ]
+        },
+        {
+          "id": "pasta",
+          "title": "الباستا",
+          "items": [
+            {
+              "name": "فوتتشيني دجاج",
+              "price": 55
+            },
+            {
+              "name": "بيستو باستا",
+              "price": 58
+            }
+          ]
+        },
+        {
+          "id": "burgers",
+          "title": "وجبات البرجر",
+          "items": [
+            {
+              "name": "برجر دجاج خبز نابولي",
+              "price": 29
+            },
+            {
+              "name": "برجر لحم خبز نابولي",
+              "price": 29
+            },
+            {
+              "name": "بووو تشيز برجر لحم",
+              "price": 34
+            },
+            {
+              "name": "بووو تشيز برجر دجاج",
+              "price": 34
+            },
+            {
+              "name": "بطاطس مقلي",
+              "price": 18
+            },
+            {
+              "name": "ساندوتش تشكن تورتيلا",
+              "price": 25
+            },
+            {
+              "name": "رمانية برجر لحم",
+              "price": 31
+            }
+          ]
+        },
+        {
+          "id": "desserts",
+          "title": "الحلويات",
+          "items": [
+            {
+              "name": "سان سبيستيان",
+              "price": 28
+            },
+            {
+              "name": "كيك تمر",
+              "price": 28
+            },
+            {
+              "name": "كيك كرنشوكو",
+              "price": 28
+            },
+            {
+              "name": "كريب",
+              "price": 30
+            },
+            {
+              "name": "وافل نوتيلا",
+              "price": 30
+            },
+            {
+              "name": "فرنش توست نوتيلا",
+              "price": 30
+            },
+            {
+              "name": "بو فيس تو فيس",
+              "price": 30
+            },
+            {
+              "name": "غيبوبه",
+              "price": 30
+            },
+            {
+              "name": "فينجر فرايد",
+              "price": 22
+            }
+          ]
+        },
+        {
+          "id": "hot-drinks",
+          "title": "المشروبات الساخنة",
+          "items": [
+            {
+              "name": "كابتشينو",
+              "price": 18
+            },
+            {
+              "name": "شوكولاته ساخنة",
+              "price": 18
+            },
+            {
+              "name": "فلات وايت",
+              "price": 18
+            },
+            {
+              "name": "ماتشا حار",
+              "price": 19
+            },
+            {
+              "name": "شاي مغربي بالنعناع",
+              "price": 6
+            },
+            {
+              "name": "اسبريسو",
+              "price": 13
+            }
+          ]
+        },
+        {
+          "id": "cold-drinks",
+          "title": "المشروبات الباردة",
+          "items": [
+            {
+              "name": "آيس كراميل ميكاتو",
+              "price": 21
+            },
+            {
+              "name": "أيس امريكانو",
+              "price": 21
+            },
+            {
+              "name": "أيس لاتيه",
+              "price": 21
+            },
+            {
+              "name": "أيس سبانش لاتيه",
+              "price": 21
+            }
+          ]
+        }
+      ]
+    }
   }
 ];
