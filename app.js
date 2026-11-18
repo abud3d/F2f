@@ -89,6 +89,7 @@ function renderFilters(categories) {
     return button;
   });
   filters.replaceChildren(...buttons);
+  filters.scrollLeft = 0;
 }
 
 function renderPhotoMenu(branch) {
@@ -123,6 +124,7 @@ function renderBranchMenu(branch) {
   const hasCatalog = items.length > 0;
   search.hidden = !hasCatalog;
   filters.hidden = !hasCatalog;
+  document.querySelector("#filter-strip").hidden = !hasCatalog;
 
   const message = hasCatalog
     ? "الأسعار والتوفّر بحسب قائمة التوصيل المنشورة لهذا الفرع. "
@@ -168,7 +170,8 @@ function renderBranch(branch) {
   const menu = element("a", "button branch-menu-link", "عرض المنيو");
   menu.href = "?branch=" + encodeURIComponent(branch.id) + "#menu";
   menu.setAttribute("aria-label", "عرض قائمة " + branch.name);
-  actions.append(menu, map, call);
+  actions.append(menu, map);
+  if (branch.phone) actions.append(call);
   card.append(
     icon,
     element("p", "branch-type", branch.type),
@@ -198,3 +201,12 @@ const initialBranch = branches.find(branch => branch.id === branchId) ?? branche
 renderBranchMenu(initialBranch);
 branchSelect.closest(".branch-picker").hidden = false;
 branchResults.replaceChildren(...branches.map(renderBranch));
+
+// Physical arrows work with RTL scroll coordinates; touch scrolling is native.
+for (const [id, direction] of [["scroll-right",1],["scroll-left",-1]]) document.getElementById(id).addEventListener("click",()=>filters.scrollBy({left:direction*Math.max(120,filters.clientWidth*0.65),behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"}));
+const locate=document.getElementById("locate-branch"), locStatus=document.getElementById("location-status");
+let manualChoice=false;branchSelect.addEventListener("change",()=>{manualChoice=true});
+const cityPoints=[{id:"hail",lat:27.5114,lon:41.7208},{id:"buhayrah",lat:24.0683919,lon:38.0944172}];
+const distance=(lat,lon,p)=>{const r=Math.PI/180,a=Math.sin((p.lat-lat)*r/2)**2+Math.cos(lat*r)*Math.cos(p.lat*r)*Math.sin((p.lon-lon)*r/2)**2;return 6371*2*Math.asin(Math.min(1,Math.sqrt(a)))};
+function locateBranch(auto=false){if(!navigator.geolocation){locStatus.textContent="الموقع غير مدعوم؛ اختر الفرع يدوياً.";return}locate.disabled=true;locStatus.textContent="جارٍ تحديد المدينة…";navigator.geolocation.getCurrentPosition(pos=>{locate.disabled=false;if(auto&&manualChoice){locStatus.textContent="تم الاحتفاظ باختيارك.";return}const {latitude,longitude}=pos.coords;const nearest=cityPoints.map(p=>({...p,km:distance(latitude,longitude,p)})).sort((a,b)=>a.km-b.km)[0];if(nearest.km>100){locStatus.textContent="أنت خارج نطاق المدن الحالية؛ اختر الفرع يدوياً.";return}const chosen=branches.find(b=>b.id===nearest.id);branchSelect.value=chosen.id;const u=new URL(location.href);u.searchParams.set("branch",chosen.id);history.replaceState(null,"",u);renderBranchMenu(chosen);locStatus.textContent=nearest.id==="hail"?"تم اختيار حائل حسب موقعك.":"تم اختيار ينبع (البحيرة افتراضياً؛ اختر فرعك داخل المدينة).";if(!auto)document.getElementById("menu").scrollIntoView({block:"start"});},()=>{locate.disabled=false;locStatus.textContent="تعذر تحديد الموقع؛ يمكنك اختيار الفرع يدوياً.";},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})}
+locate.addEventListener("click",()=>locateBranch());if(!branchId&&navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(p=>{if(p.state==="granted"&&!manualChoice)locateBranch(true)}).catch(()=>{});
