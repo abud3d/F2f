@@ -13,13 +13,13 @@
   <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a>
+      <div class="header-brand"><a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a><div class="branch-picker header-picker" hidden><button type="button" class="branch-trigger" id="branch-trigger" aria-expanded="false" aria-controls="branch-options"><span class="pin-icon" aria-hidden="true"></span><span id="current-branch">اختر الفرع</span><span aria-hidden="true">⌄</span></button><div id="branch-options" class="branch-options" hidden><p class="picker-caption">اختر فرعك</p><label for="menu-branch" class="sr-only">اختر الفرع</label><select id="menu-branch" hidden></select><div id="manual-branches"></div><button type="button" class="button locate-button" id="locate-branch"><span class="pin-icon" aria-hidden="true"></span> أقرب فرع إليّ</button></div><p id="location-status" role="status"></p></div></div>
       <nav aria-label="التنقل الرئيسي">
         <a href="#top">الرئيسية</a>
         <a href="#menu">القائمة</a>
         <a href="#branches">الفروع</a>
       </nav>
-      <a class="header-location" href="#branches"><span aria-hidden="true">↗</span> اختر فرعك</a>
+      
     </div>
   </header>
 
@@ -42,10 +42,7 @@
       <div class="container">
         <div class="section-head">
           <h2 id="menu-title">قوائم الفروع</h2>
-          <div class="branch-picker" hidden>
-            <label for="menu-branch">اختر الفرع</label>
-            <select id="menu-branch"></select><button type="button" class="button locate-button" id="locate-branch">⌖ أقرب فرع إليّ</button><p id="location-status" role="status"></p>
-          </div>
+          
         </div>
         <div class="menu-search" hidden>
           <label class="sr-only" for="menu-query">ابحث في قائمة الفرع</label>
