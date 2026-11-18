@@ -1,7 +1,9 @@
 import { branches } from "./data.js";
+import { createCart } from "./cart.js";
 const slides = {buhayrah:{image:"./yanbu-landmark.svg",caption:"الواجهة البحرية — ينبع"},suraif:{image:"./yanbu-oldtown.svg",caption:"ينبع التاريخية"},jabriyah:{image:"./yanbu-coast.svg",caption:"ساحل البحر الأحمر — ينبع"},hail:{image:"./hail-landmark.svg",caption:"جبال أجا — حائل"}};
 
 const branchSelect = document.querySelector("#menu-branch");
+const cart = createCart(branchSelect);
 const menuTitle = document.querySelector("#menu-title");
 const menuSource = document.querySelector("#menu-source");
 const queryInput = document.querySelector("#menu-query");
@@ -52,6 +54,7 @@ function renderItem(item) {
   body.append(details, element("h3", "", item.name));
   if (item.description) body.append(element("p", "", item.description));
   if (item.imageReference) body.append(element("p", "image-reference", "صورة مرجعية للصنف من فرع آخر"));
+  if(cart) body.append(cart.addControl(item));
   card.append(body);
   return card;
 }
@@ -78,6 +81,7 @@ function renderMenu() {
   const grid = element("div", "menu-grid");
   grid.append(...visibleItems.map(renderItem));
   results.replaceChildren(grid);
+  cart?.refresh();
   status.textContent = "عدد الأصناف المعروضة: " + priceFormat.format(visibleItems.length);
 }
 
@@ -109,11 +113,13 @@ function renderPhotoMenu(branch) {
   const figure = element("figure", "photo-menu");
   const zoom=element("button","dish-photo");zoom.type="button";zoom.setAttribute("aria-label","تكبير صورة القائمة");zoom.append(photo);photo.addEventListener("error",()=>{zoom.hidden=true},{once:true});zoom.addEventListener("click",()=>openImage(branch.menu.image,branch.name,"صورة القائمة للاستفسار"));figure.append(zoom, caption);
   results.replaceChildren(figure);
+  const note=element("p","source-note","هذه القائمة صورة فقط؛ إضافة الأصناف للسلة تحتاج قائمة رقمية معتمدة.");results.append(note);
   status.textContent = "صورة قائمة " + branch.name;
 }
 
 function renderBranchMenu(branch) {
   const { menu } = branch;
+  cart?.setBranch(branch);
   updateBranchHero(branch);
   if (!menuTitle) { branchSelect.value=branch.id; document.getElementById("current-branch").textContent=branch.name; document.querySelectorAll("[data-branch-choice]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.branchChoice===branch.id))); return; }
   menuTitle.textContent = "قائمة " + branch.name;
