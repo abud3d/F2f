@@ -4,7 +4,7 @@ const branchSelect = document.querySelector("#menu-branch");
 const menuTitle = document.querySelector("#menu-title");
 const menuSource = document.querySelector("#menu-source");
 const queryInput = document.querySelector("#menu-query");
-const search = queryInput.closest(".menu-search");
+const search = queryInput?.closest(".menu-search");
 const filters = document.querySelector("#category-filters");
 const results = document.querySelector("#menu-results");
 const status = document.querySelector("#menu-status");
@@ -113,6 +113,8 @@ function renderPhotoMenu(branch) {
 
 function renderBranchMenu(branch) {
   const { menu } = branch;
+  updateBranchHero(branch);
+  if (!menuTitle) { branchSelect.value=branch.id; document.getElementById("current-branch").textContent=branch.name; document.querySelectorAll("[data-branch-choice]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.branchChoice===branch.id))); return; }
   menuTitle.textContent = "قائمة " + branch.name;
   branchSelect.value = branch.id;
   document.getElementById("current-branch").textContent = branch.name;
@@ -146,7 +148,7 @@ function renderBranchMenu(branch) {
   }
 }
 
-filters.addEventListener("click", event => {
+filters?.addEventListener("click", event => {
   const button = event.target.closest("button[data-category]");
   if (!button || button.dataset.category === selectedCategory) return;
 
@@ -155,10 +157,11 @@ filters.addEventListener("click", event => {
   button.setAttribute("aria-pressed", "true");
   renderMenu();
 });
-queryInput.addEventListener("input", renderMenu);
+queryInput?.addEventListener("input", renderMenu);
 
 function renderBranch(branch) {
   const card = element("article", "branch-card");
+  card.id=branch.id;
   const icon = element("span", "branch-mark", "⌖");
   icon.setAttribute("aria-hidden", "true");
 
@@ -171,7 +174,7 @@ function renderBranch(branch) {
 
   const actions = element("div", "branch-actions");
   const menu = element("a", "button branch-menu-link", "عرض المنيو");
-  menu.href = "?branch=" + encodeURIComponent(branch.id) + "#menu";
+  menu.href = "./index.html?branch=" + encodeURIComponent(branch.id) + "#menu";
   menu.setAttribute("aria-label", "عرض قائمة " + branch.name);
   actions.append(menu, map);
   if (branch.phone) actions.append(call);
@@ -203,15 +206,15 @@ const branchId = new URL(window.location.href).searchParams.get("branch");
 const initialBranch = branches.find(branch => branch.id === branchId) ?? branches[0];
 renderBranchMenu(initialBranch);
 branchSelect.closest(".branch-picker").hidden = false;
-branchResults.replaceChildren(...branches.map(renderBranch));
+branchResults?.replaceChildren(...branches.map(renderBranch));
 
 // Physical arrows work with RTL scroll coordinates; touch scrolling is native.
-for (const [id, direction] of [["scroll-right",1],["scroll-left",-1]]) document.getElementById(id).addEventListener("click",()=>filters.scrollBy({left:direction*Math.max(120,filters.clientWidth*0.65),behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"}));
+for (const [id, direction] of [["scroll-right",1],["scroll-left",-1]]) document.getElementById(id)?.addEventListener("click",()=>filters.scrollBy({left:direction*Math.max(120,filters.clientWidth*0.65),behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"}));
 const locate=document.getElementById("locate-branch"), locStatus=document.getElementById("location-status");
 let manualChoice=false;branchSelect.addEventListener("change",()=>{manualChoice=true});
 const cityPoints=[{id:"hail",lat:27.5114,lon:41.7208},{id:"buhayrah",lat:24.0683919,lon:38.0944172}];
 const distance=(lat,lon,p)=>{const r=Math.PI/180,a=Math.sin((p.lat-lat)*r/2)**2+Math.cos(lat*r)*Math.cos(p.lat*r)*Math.sin((p.lon-lon)*r/2)**2;return 6371*2*Math.asin(Math.min(1,Math.sqrt(a)))};
-function locateBranch(auto=false){if(!navigator.geolocation){locStatus.textContent="الموقع غير مدعوم؛ اختر الفرع يدوياً.";return}locate.disabled=true;locStatus.textContent="جارٍ تحديد المدينة…";navigator.geolocation.getCurrentPosition(pos=>{locate.disabled=false;if(auto&&manualChoice){locStatus.textContent="تم الاحتفاظ باختيارك.";return}const {latitude,longitude}=pos.coords;const nearest=cityPoints.map(p=>({...p,km:distance(latitude,longitude,p)})).sort((a,b)=>a.km-b.km)[0];if(nearest.km>100){locStatus.textContent="أنت خارج نطاق المدن الحالية؛ اختر الفرع يدوياً.";return}const chosen=branches.find(b=>b.id===nearest.id);branchSelect.value=chosen.id;const u=new URL(location.href);u.searchParams.set("branch",chosen.id);history.replaceState(null,"",u);renderBranchMenu(chosen);locStatus.textContent=nearest.id==="hail"?"تم اختيار حائل حسب موقعك.":"تم اختيار ينبع (البحيرة افتراضياً؛ اختر فرعك داخل المدينة).";if(!auto)document.getElementById("menu").scrollIntoView({block:"start"});},()=>{locate.disabled=false;locStatus.textContent="تعذر تحديد الموقع؛ يمكنك اختيار الفرع يدوياً.";},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})}
+function locateBranch(auto=false){if(!navigator.geolocation){locStatus.textContent="الموقع غير مدعوم؛ اختر الفرع يدوياً.";return}locate.disabled=true;locStatus.textContent="جارٍ تحديد المدينة…";navigator.geolocation.getCurrentPosition(pos=>{locate.disabled=false;if(auto&&manualChoice){locStatus.textContent="تم الاحتفاظ باختيارك.";return}const {latitude,longitude}=pos.coords;const nearest=cityPoints.map(p=>({...p,km:distance(latitude,longitude,p)})).sort((a,b)=>a.km-b.km)[0];if(nearest.km>100){locStatus.textContent="أنت خارج نطاق المدن الحالية؛ اختر الفرع يدوياً.";return}const chosen=branches.find(b=>b.id===nearest.id);branchSelect.value=chosen.id;const u=new URL(location.href);u.searchParams.set("branch",chosen.id);history.replaceState(null,"",u);renderBranchMenu(chosen);locStatus.textContent=nearest.id==="hail"?"تم اختيار حائل حسب موقعك.":"تم اختيار ينبع (البحيرة افتراضياً؛ اختر فرعك داخل المدينة).";if(!auto)document.getElementById("menu")?.scrollIntoView({block:"start"});},()=>{locate.disabled=false;locStatus.textContent="تعذر تحديد الموقع؛ يمكنك اختيار الفرع يدوياً.";},{enableHighAccuracy:false,timeout:8000,maximumAge:300000})}
 locate.addEventListener("click",()=>locateBranch());if(!branchId&&navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(p=>{if(p.state==="granted"&&!manualChoice)locateBranch(true)}).catch(()=>{});
 
 const trigger=document.getElementById("branch-trigger"), options=document.getElementById("branch-options"), manual=document.getElementById("manual-branches");
@@ -219,3 +222,7 @@ function togglePicker(open){options.hidden=!open;trigger.setAttribute("aria-expa
 trigger.addEventListener("click",()=>togglePicker(options.hidden));
 for(const branch of branches){const b=element("button","branch-choice");b.type="button";b.dataset.branchChoice=branch.id;b.setAttribute("aria-pressed",String(branchSelect.value===branch.id));const pin=element("span","pin-icon");pin.setAttribute("aria-hidden","true");b.append(pin,element("span","",branch.name));b.addEventListener("click",()=>{manualChoice=true;branchSelect.value=branch.id;branchSelect.dispatchEvent(new Event("change"));togglePicker(false);trigger.focus();});manual.append(b);}
 document.addEventListener("click",e=>{if(!e.target.closest(".header-picker"))togglePicker(false)});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!options.hidden){togglePicker(false);trigger.focus()}});
+
+function updateBranchHero(branch){const hail=branch.id==="hail";const hero=document.querySelector(".hero");if(hero){hero.dataset.city=hail?"hail":"yanbu";document.getElementById("hero-title").textContent="فيس تو فيس — "+branch.name;document.getElementById("landmark-caption").textContent=hail?"جبال أجا · رسم توضيحي لحائل":"الواجهة البحرية · رسم توضيحي لينبع";}document.querySelectorAll("[data-current-branch]").forEach(a=>{const u=new URL(a.getAttribute("href"),location.href);u.searchParams.set("branch",branch.id);a.href=u.href;});}
+const side=document.getElementById("side-nav"),navToggle=document.getElementById("nav-toggle");navToggle.addEventListener("click",()=>side.showModal());document.getElementById("nav-close").addEventListener("click",()=>side.close());side.addEventListener("click",e=>{if(e.target===side||e.target.closest("a"))side.close()});side.addEventListener("close",()=>navToggle.focus());
+const theme=document.getElementById("theme-toggle");const root=document.documentElement;function themeState(){const dark=root.dataset.theme==="dark"||(!root.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);theme.setAttribute("aria-pressed",String(dark));theme.textContent=dark?"☀":"☾";}try{const saved=localStorage.getItem("f2f-theme");if(saved==="light"||saved==="dark")root.dataset.theme=saved;}catch{}themeState();theme.addEventListener("click",()=>{root.dataset.theme=theme.getAttribute("aria-pressed")==="true"?"light":"dark";try{localStorage.setItem("f2f-theme",root.dataset.theme)}catch{}themeState()});
