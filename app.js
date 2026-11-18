@@ -1,4 +1,5 @@
 import { branches } from "./data.js";
+const slides = {buhayrah:{image:"./yanbu-landmark.svg",caption:"الواجهة البحرية — ينبع"},suraif:{image:"./yanbu-oldtown.svg",caption:"ينبع التاريخية"},jabriyah:{image:"./yanbu-coast.svg",caption:"ساحل البحر الأحمر — ينبع"},hail:{image:"./hail-landmark.svg",caption:"جبال أجا — حائل"}};
 
 const branchSelect = document.querySelector("#menu-branch");
 const menuTitle = document.querySelector("#menu-title");
@@ -39,7 +40,7 @@ function renderItem(item) {
     photo.decoding = "async";
     photo.addEventListener("error", () => { photo.hidden = true; }, { once: true });
     photo.src = item.image;
-    card.append(photo);
+    const zoom=element("button","dish-photo");zoom.type="button";zoom.setAttribute("aria-label","تكبير صورة "+item.name);zoom.append(photo);photo.addEventListener("error",()=>{zoom.hidden=true},{once:true});zoom.addEventListener("click",()=>openImage(item.image,item.name,item.imageReference?"صورة مرجعية من فرع آخر":item.categoryTitle));card.append(zoom);
   }
   const body = element("div", "menu-card-body");
   const details = element("div", "menu-card-details");
@@ -106,7 +107,7 @@ function renderPhotoMenu(branch) {
   const caption = element("figcaption");
   caption.append(link);
   const figure = element("figure", "photo-menu");
-  figure.append(photo, caption);
+  const zoom=element("button","dish-photo");zoom.type="button";zoom.setAttribute("aria-label","تكبير صورة القائمة");zoom.append(photo);photo.addEventListener("error",()=>{zoom.hidden=true},{once:true});zoom.addEventListener("click",()=>openImage(branch.menu.image,branch.name,"صورة القائمة للاستفسار"));figure.append(zoom, caption);
   results.replaceChildren(figure);
   status.textContent = "صورة قائمة " + branch.name;
 }
@@ -223,6 +224,9 @@ trigger.addEventListener("click",()=>togglePicker(options.hidden));
 for(const branch of branches){const b=element("button","branch-choice");b.type="button";b.dataset.branchChoice=branch.id;b.setAttribute("aria-pressed",String(branchSelect.value===branch.id));const pin=element("span","pin-icon");pin.setAttribute("aria-hidden","true");b.append(pin,element("span","",branch.name));b.addEventListener("click",()=>{manualChoice=true;branchSelect.value=branch.id;branchSelect.dispatchEvent(new Event("change"));togglePicker(false);trigger.focus();});manual.append(b);}
 document.addEventListener("click",e=>{if(!e.target.closest(".header-picker"))togglePicker(false)});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!options.hidden){togglePicker(false);trigger.focus()}});
 
-function updateBranchHero(branch){const hail=branch.id==="hail";const hero=document.querySelector(".hero");if(hero){hero.dataset.city=hail?"hail":"yanbu";document.getElementById("hero-title").textContent="فيس تو فيس — "+branch.name;document.getElementById("landmark-caption").textContent=hail?"جبال أجا · رسم توضيحي لحائل":"الواجهة البحرية · رسم توضيحي لينبع";}document.querySelectorAll("[data-current-branch]").forEach(a=>{const u=new URL(a.getAttribute("href"),location.href);u.searchParams.set("branch",branch.id);a.href=u.href;});}
+function updateBranchHero(branch){const hero=document.querySelector(".hero"),slide=slides[branch.id];if(hero&&slide){hero.dataset.branch=branch.id;document.getElementById("hero-title").textContent=branch.name;document.getElementById("hero-branch-line").textContent="مطعم ومقهى — "+branch.name;document.getElementById("landmark-caption").textContent=slide.caption+" · رسم توضيحي";const img=document.getElementById("hero-image");img.src=slide.image;img.alt="رسم توضيحي: "+slide.caption;document.getElementById("hero-photo").dataset.branchId=branch.id;}document.querySelectorAll("[data-current-branch]").forEach(a=>{const u=new URL(a.getAttribute("href"),location.href);u.searchParams.set("branch",branch.id);a.href=u.href;});}
 const side=document.getElementById("side-nav"),navToggle=document.getElementById("nav-toggle");navToggle.addEventListener("click",()=>side.showModal());document.getElementById("nav-close").addEventListener("click",()=>side.close());side.addEventListener("click",e=>{if(e.target===side||e.target.closest("a"))side.close()});side.addEventListener("close",()=>navToggle.focus());
 const theme=document.getElementById("theme-toggle");const root=document.documentElement;function themeState(){const dark=root.dataset.theme==="dark"||(!root.dataset.theme&&matchMedia("(prefers-color-scheme: dark)").matches);theme.setAttribute("aria-pressed",String(dark));theme.textContent=dark?"☀":"☾";}try{const saved=localStorage.getItem("f2f-theme");if(saved==="light"||saved==="dark")root.dataset.theme=saved;}catch{}themeState();theme.addEventListener("click",()=>{root.dataset.theme=theme.getAttribute("aria-pressed")==="true"?"light":"dark";try{localStorage.setItem("f2f-theme",root.dataset.theme)}catch{}themeState()});
+
+function openImage(src,title,description){const dialog=document.getElementById("image-viewer");if(!dialog)return;const image=document.getElementById("viewer-image");image.src=src;image.alt=title;document.getElementById("image-viewer-title").textContent=title;document.getElementById("viewer-description").textContent=description||"";if(!dialog.open)dialog.showModal();}
+const viewer=document.getElementById("image-viewer");if(viewer){document.getElementById("viewer-close").addEventListener("click",()=>viewer.close());viewer.addEventListener("click",e=>{if(e.target===viewer)viewer.close()});document.getElementById("hero-photo").addEventListener("click",()=>{const b=branches.find(b=>b.id===branchSelect.value),s=slides[b.id];openImage(s.image,b.name,s.caption+" · رسم توضيحي")});}
