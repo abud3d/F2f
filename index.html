@@ -14,25 +14,21 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <div class="header-brand"><a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a><div class="branch-picker header-picker" hidden><button type="button" class="branch-trigger" id="branch-trigger" aria-expanded="false" aria-controls="branch-options"><span class="pin-icon" aria-hidden="true"></span><span id="current-branch">اختر الفرع</span><span aria-hidden="true">⌄</span></button><div id="branch-options" class="branch-options" hidden><p class="picker-caption">اختر فرعك</p><label for="menu-branch" class="sr-only">اختر الفرع</label><select id="menu-branch" hidden></select><div id="manual-branches"></div><button type="button" class="button locate-button" id="locate-branch"><span class="pin-icon" aria-hidden="true"></span> أقرب فرع إليّ</button></div><p id="location-status" role="status"></p></div></div>
-      <nav aria-label="التنقل الرئيسي">
-        <a href="#top">الرئيسية</a>
-        <a href="#menu">القائمة</a>
-        <a href="#branches">الفروع</a>
-      </nav>
+      <div class="header-controls"><button id="theme-toggle" class="header-button" type="button" aria-label="تبديل الوضع الليلي" aria-pressed="false">☾</button><button id="nav-toggle" class="header-button" type="button" aria-label="فتح القائمة" aria-haspopup="dialog">☰</button></div>
       
     </div>
-  </header>
+  </header><dialog id="side-nav" aria-labelledby="side-title"><div class="side-heading"><strong id="side-title">F2F · القائمة</strong><button class="header-button" id="nav-close" type="button" aria-label="إغلاق القائمة">×</button></div><nav aria-label="التنقل الرئيسي"><a href="./index.html" data-current-branch>الرئيسية</a><a href="./index.html#menu" data-current-branch>القائمة</a><a href="./branches.html" data-current-branch>الفروع</a></nav></dialog>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> مطعم ومقهى في حائل وينبع</p>
-          <h1 id="hero-title">فيس تو <em>فيس</em></h1>
+          <h1 id="hero-title">فيس تو فيس</h1><p class="landmark-caption" id="landmark-caption"></p>
           <p class="hero-description">من البيتزا النابولية إلى القهوة المختصة، اكتشف القائمة واختر الفرع الأقرب لك.</p>
           <div class="hero-actions">
             <a class="button primary" href="#menu">تصفّح القائمة <span aria-hidden="true">←</span></a>
-            <a class="button ghost" href="#branches">تعرّف على الفروع</a>
+            <a class="button ghost" href="./branches.html" data-current-branch>تعرّف على الفروع</a>
           </div>
         </div>
       </div>
@@ -62,26 +58,14 @@
       </div>
     </section>
 
-    <section class="branches-section" id="branches" aria-labelledby="branches-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow"><span></span> حائل وينبع، السعودية</p>
-            <h2 id="branches-title">فروع فيس تو فيس</h2>
-          </div>
-        </div>
-        <div class="branch-grid" id="branch-results">
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=F2F%20Yanbu">ابحث عن فيس تو فيس على الخريطة</a></p>
-        </div>
-      </div>
-    </section>
+    
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a>
       <a href="https://www.instagram.com/f2f_lounge/">إنستغرام <span aria-hidden="true">↗</span></a>
-      <a href="https://www.face2face.sa/">الموقع المرجعي <span aria-hidden="true">↗</span></a>
+      <a href="https://www.face2face.sa/">الموقع المرجعي <span aria-hidden="true">↗</span></a><details class="footer-branches"><summary>الفروع</summary><ul><li><a href="./branches.html#buhayrah">فرع البحيرة</a></li><li><a href="./branches.html#suraif">فرع الصريف</a></li><li><a href="./branches.html#jabriyah">فرع الجابرية</a></li><li><a href="./branches.html#hail">فرع حائل</a></li></ul></details>
       <a class="back-top" href="#top">أعلى الصفحة <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
