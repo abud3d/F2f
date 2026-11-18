@@ -11,6 +11,8 @@ const items = categories.flatMap(category => category.items.map(entry => ({
   categoryTitle: category.title
 })));
 
+const priceFormat = new Intl.NumberFormat("ar-SA", { maximumFractionDigits: 2 });
+
 let selectedCategory = "featured";
 
 function element(tag, className, label) {
@@ -41,10 +43,13 @@ function renderItem(item) {
     card.append(photo);
   }
   const body = element("div", "menu-card-body");
-  body.append(
+  const details = element("div", "menu-card-details");
+  const price = item.price == null ? "السعر غير متاح" : priceFormat.format(item.price) + " ر.س";
+  details.append(
     element("p", "category-name", item.categoryTitle),
-    element("h3", "", item.name)
+    element("p", item.price == null ? "menu-price unavailable" : "menu-price", price)
   );
+  body.append(details, element("h3", "", item.name));
   if (item.description) body.append(element("p", "", item.description));
   card.append(body);
   return card;
