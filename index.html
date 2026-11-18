@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171613">
+  <meta name="description" content="استكشف قائمة مطعم ومقهى فيس تو فيس وتعرّف على مواقع فروعه في ينبع.">
+  <title>فيس تو فيس — القائمة والفروع</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">انتقل إلى المحتوى</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a>
+      <nav aria-label="التنقل الرئيسي">
+        <a href="#top">الرئيسية</a>
+        <a href="#menu">القائمة</a>
+        <a href="#branches">الفروع</a>
+      </nav>
+      <a class="header-location" href="#branches"><span aria-hidden="true">↗</span> زرنا في ينبع</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> مطعم ومقهى في ينبع</p>
+          <h1 id="hero-title">فيس تو <em>فيس</em></h1>
+          <p class="hero-description">من البيتزا النابولية إلى القهوة المختصة، اكتشف القائمة واختر الفرع الأقرب لك.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#menu">تصفّح القائمة <span aria-hidden="true">←</span></a>
+            <a class="button ghost" href="#branches">تعرّف على الفروع</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="menu-title">تصفّح القائمة</h2>
+          </div>
+          <div class="menu-search" hidden>
+            <label class="sr-only" for="menu-query">ابحث في القائمة</label>
+            <span aria-hidden="true" class="search-mark"></span>
+            <input id="menu-query" type="search" placeholder="ابحث عن طبق أو مشروب" autocomplete="off" maxlength="100">
+          </div>
+        </div>
+        <div class="filters" id="category-filters" role="group" aria-label="أقسام القائمة" hidden></div>
+        <p class="sr-only" id="menu-status" role="status"></p>
+        <div id="menu-results">
+          <p><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الأصالة/فيس-تو-فيس-57348">عرض قائمة فيس تو فيس على هنقرستيشن</a></p>
+        </div>
+        <p class="source-note">القائمة استرشادية وقد يختلف توفر الأصناف بين الفروع. <a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الأصالة/فيس-تو-فيس-57348">مصدر القائمة ↗</a></p>
+      </div>
+    </section>
+
+    <section class="branches-section" id="branches" aria-labelledby="branches-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><span></span> ينبع، السعودية</p>
+            <h2 id="branches-title">فروع فيس تو فيس</h2>
+          </div>
+        </div>
+        <div class="branch-grid" id="branch-results">
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=F2F%20Yanbu">ابحث عن فيس تو فيس على الخريطة</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="wordmark" href="#top" aria-label="فيس تو فيس، الرئيسية" dir="ltr">F<span>2</span>F</a>
+      <a href="https://www.instagram.com/f2f_lounge/">إنستغرام <span aria-hidden="true">↗</span></a>
+      <a href="https://www.face2face.sa/">الموقع المرجعي <span aria-hidden="true">↗</span></a>
+      <a class="back-top" href="#top">أعلى الصفحة <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</body>
+</html>
