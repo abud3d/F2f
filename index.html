@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171613">
-  <meta name="description" content="استكشف قائمة مطعم ومقهى فيس تو فيس وتعرّف على مواقع فروعه في ينبع.">
+  <meta name="description" content="استكشف قائمة مطعم ومقهى فيس تو فيس وتعرّف على مواقع فروعه في حائل وينبع.">
   <title>فيس تو فيس — القائمة والفروع</title>
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
@@ -19,7 +19,7 @@
         <a href="#menu">القائمة</a>
         <a href="#branches">الفروع</a>
       </nav>
-      <a class="header-location" href="#branches"><span aria-hidden="true">↗</span> زرنا في ينبع</a>
+      <a class="header-location" href="#branches"><span aria-hidden="true">↗</span> اختر فرعك</a>
     </div>
   </header>
 
@@ -27,7 +27,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> مطعم ومقهى في ينبع</p>
+          <p class="eyebrow"><span></span> مطعم ومقهى في حائل وينبع</p>
           <h1 id="hero-title">فيس تو <em>فيس</em></h1>
           <p class="hero-description">من البيتزا النابولية إلى القهوة المختصة، اكتشف القائمة واختر الفرع الأقرب لك.</p>
           <div class="hero-actions">
@@ -44,7 +44,7 @@
           <h2 id="menu-title">قوائم الفروع</h2>
           <div class="branch-picker" hidden>
             <label for="menu-branch">اختر الفرع</label>
-            <select id="menu-branch"></select>
+            <select id="menu-branch"></select><button type="button" class="button locate-button" id="locate-branch">⌖ أقرب فرع إليّ</button><p id="location-status" role="status"></p>
           </div>
         </div>
         <div class="menu-search" hidden>
@@ -52,14 +52,14 @@
           <span aria-hidden="true" class="search-mark"></span>
           <input id="menu-query" type="search" placeholder="ابحث عن طبق أو مشروب" autocomplete="off" maxlength="100">
         </div>
-        <div class="filters" id="category-filters" role="group" aria-label="أقسام قائمة الفرع" hidden></div>
+        <div class="filter-strip" id="filter-strip" hidden><button type="button" class="strip-arrow" id="scroll-right" aria-label="تمرير يمين">›</button><div class="filters" id="category-filters" role="group" aria-label="أقسام قائمة الفرع" hidden></div><button type="button" class="strip-arrow" id="scroll-left" aria-label="تمرير يسار">‹</button></div>
         <p class="sr-only" id="menu-status" role="status"></p>
         <p class="source-note" id="menu-source" hidden></p>
         <div id="menu-results">
           <ul>
             <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/البحيرة/فيس-2-فيس-198197">قائمة فرع البحيرة</a></li>
             <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/ينبع/الصريف/face-2-face-100992">قائمة فرع الصريف</a></li>
-            <li><a href="https://menu02.restaurantguru.com/m1/fys-tw-fys-drayf-thrw-F2F-menu-f1o.jpg">صورة قائمة فرع الجابرية</a></li>
+            <li><a href="https://hungerstation.com/sa-ar/restaurants/regions/حائل/الودي/face-2-face-57348">قائمة حائل</a></li><li><a href="https://menu02.restaurantguru.com/m1/fys-tw-fys-drayf-thrw-F2F-menu-f1o.jpg">صورة قائمة فرع الجابرية</a></li>
           </ul>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="eyebrow"><span></span> ينبع، السعودية</p>
+            <p class="eyebrow"><span></span> حائل وينبع، السعودية</p>
             <h2 id="branches-title">فروع فيس تو فيس</h2>
           </div>
         </div>
