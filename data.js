@@ -1229,27 +1229,39 @@ export const branches = [
             {
               "name": "ماكروني بول",
               "price": 33,
-              "featured": true
+              "featured": true,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/d054d760-8d3a-4ae7-8634-89f0686d881d.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بطاطس حارة بالكزبرة والثوم",
-              "price": 19
+              "price": 19,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/16ddf7e5-8506-4080-88cc-1f85480c5599.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "تاكو جمبري",
-              "price": 32
+              "price": 32,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/134898299/e7aa8eb2-8019-4414-bd5d-a4c159f556bb.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "تاكو دجاج",
-              "price": 23
+              "price": 23,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/79cbe454-fa1d-46d5-be96-9e8ce67ebb0f.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "كريزي فيس",
-              "price": 26
+              "price": 26,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/1db73783-40b2-4edc-ae29-f04971c2d52a.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بطاطس بالترافل",
-              "price": 34
+              "price": 34,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/7bbf1848-6a95-4ecb-bcba-7b643b77d298.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1293,19 +1305,27 @@ export const branches = [
           "items": [
             {
               "name": "سلطة سيزر دجاج",
-              "price": 38
+              "price": 38,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800645/7ce7de12-2ac6-4419-ad33-74d0a28bad53.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "سلطة روكا",
-              "price": 25
+              "price": 25,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800646/bee99a91-edf8-4a19-85fd-d6b2d4c415c4.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "سلطة سيزر بايت",
-              "price": 21
+              "price": 21,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800647/a47930d0-bbd4-4433-a0b6-9cbacdebf943.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "سلطه كينوا",
-              "price": 34
+              "price": 34,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800648/a471568b-61de-49a8-8dc9-7659922e810b.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "سلطة يوناني",
@@ -1319,19 +1339,27 @@ export const branches = [
           "items": [
             {
               "name": "روزيتو مشروم دجاج",
-              "price": 49
+              "price": 49,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/52477396/7f8ec078-4b57-4532-bd2c-7c3312ebb9ad.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "روزيتو زعفران بالدجاج",
-              "price": 49
+              "price": 49,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800651/7186f0b1-7c4e-44ea-b680-90c1335d889c.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "دجاج بالفطر والكريمة",
-              "price": 46
+              "price": 46,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/fb5f70e0-a0df-4848-8cee-5f907549650b.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "عصفورات اللحمة بالبيستو",
-              "price": 48
+              "price": 48,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/3e760431-f845-4e0b-bb94-ff5f7652e3e9.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1341,11 +1369,15 @@ export const branches = [
           "items": [
             {
               "name": "فوتتشيني دجاج",
-              "price": 55
+              "price": 55,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800653/14e89604-9368-4eec-8636-ff64acf009d5.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بيستو باستا",
-              "price": 58
+              "price": 58,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/26012552/b0f1abc0-8299-4193-bccc-8ff113aa55f5.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1355,31 +1387,45 @@ export const branches = [
           "items": [
             {
               "name": "برجر دجاج خبز نابولي",
-              "price": 29
+              "price": 29,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800665/23cde654-1b73-4b85-8cd9-4df3d4aeb82e.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "برجر لحم خبز نابولي",
-              "price": 29
+              "price": 29,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800662/688f54f2-26dc-4650-9bc3-1a747083da96.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بووو تشيز برجر لحم",
-              "price": 34
+              "price": 34,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800661/c6699fa2-b8a1-4e70-a40c-c3c5fe9e3b3b.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بووو تشيز برجر دجاج",
-              "price": 34
+              "price": 34,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800660/23022cd4-4f55-4291-acf9-1668350a0507.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بطاطس مقلي",
-              "price": 18
+              "price": 18,
+              "image": "https://images.deliveryhero.io/image/hungerstation/menuitem/image_url_ref/671c5e3af4c4aebb1a874e046765402c.jpeg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "ساندوتش تشكن تورتيلا",
-              "price": 25
+              "price": 25,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/a19f07b0-fe87-42e0-ac6a-0b379fd71b1e.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "رمانية برجر لحم",
-              "price": 31
+              "price": 31,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/caa36d54-4e53-45b1-8ef6-2e885119e6ef.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1389,39 +1435,57 @@ export const branches = [
           "items": [
             {
               "name": "سان سبيستيان",
-              "price": 28
+              "price": 28,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/52522165/78608193-4d2c-4602-96fd-f4bc25f59c63.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "كيك تمر",
-              "price": 28
+              "price": 28,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/52522640/6822c520-0974-422e-abfd-bf466eeffff2.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "كيك كرنشوكو",
-              "price": 28
+              "price": 28,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/75268845/9ddc756d-da6e-4faa-8fc2-bbbe6827019e.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "كريب",
-              "price": 30
+              "price": 30,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800674/da58002f-803e-43b9-94b7-5ad524f6c89c.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "وافل نوتيلا",
-              "price": 30
+              "price": 30,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800675/a9062bea-13bd-469e-b39b-34f5ae99fd5d.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "فرنش توست نوتيلا",
-              "price": 30
+              "price": 30,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800676/f964ff1d-9119-4024-b370-d795392951ff.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "بو فيس تو فيس",
-              "price": 30
+              "price": 30,
+              "image": "https://images.deliveryhero.io/image/global-menu-service/HS_SA/vendor/57348/PRODUCT/5800677/aa2bbc0d-bc65-4b44-8deb-92408a109339.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "غيبوبه",
-              "price": 30
+              "price": 30,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800678/db1b809a-8b9e-4a79-9f59-eff0deb4b311.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "فينجر فرايد",
-              "price": 22
+              "price": 22,
+              "image": "https://images.deliveryhero.io/image/hungerstation/menuitem/image/5800679?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1431,27 +1495,39 @@ export const branches = [
           "items": [
             {
               "name": "كابتشينو",
-              "price": 18
+              "price": 18,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800684/8e7592a7-a033-4e1d-b8f0-7a5472c84b18.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "شوكولاته ساخنة",
-              "price": 18
+              "price": 18,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800701/e4d7d5be-3805-44cd-9618-e995fb55932e.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "فلات وايت",
-              "price": 18
+              "price": 18,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800693/806310c8-4321-4a4b-b7b4-1c1c64fdbd04.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "ماتشا حار",
-              "price": 19
+              "price": 19,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/52522943/9122e5ea-c825-40a4-997f-5586799faba0.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "شاي مغربي بالنعناع",
-              "price": 6
+              "price": 6,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800703/0857a7c8-b1b1-423d-854e-9246f62025b1.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "اسبريسو",
-              "price": 13
+              "price": 13,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800683/f4a91742-2fbb-464e-97ec-ee82ee56cd85.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         },
@@ -1461,19 +1537,27 @@ export const branches = [
           "items": [
             {
               "name": "آيس كراميل ميكاتو",
-              "price": 21
+              "price": 21,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800714/5148d6b3-9860-45ff-b36f-5fc46ea850d8.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "أيس امريكانو",
-              "price": 21
+              "price": 21,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800715/99871139-cf7c-4ca3-a924-fad355a4db5e.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "أيس لاتيه",
-              "price": 21
+              "price": 21,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800716/f73d7cfd-567a-4135-99c0-8dd4fc5b2897.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             },
             {
               "name": "أيس سبانش لاتيه",
-              "price": 21
+              "price": 21,
+              "image": "https://hungerstation.dhmedia.io/image/global-menu-service/HS_SA/vendor/57348/product/5800717/18b240a4-e5a6-4f2d-a8b4-078006b6bed5.jpg?quality=75&webp=true&width=720",
+              "imageReference": true
             }
           ]
         }
